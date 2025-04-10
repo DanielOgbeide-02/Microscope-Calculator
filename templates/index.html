@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Microscope Size Calculator</title>
+
+  <!-- Google Fonts (nice, free) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Our own CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="card">
+    <h1>Microscope Size Calculator</h1>
+
+    <form method="post" class="grid">
+      <label>Username
+        <input name="user" placeholder="e.g. Alice">
+      </label>
+
+      <label>Image size (mm)
+        <input name="mm" type="number" step="any" placeholder="3.2">
+      </label>
+
+      <label>Magnification&nbsp;×
+        <input name="mag" type="number" step="any" placeholder="400">
+      </label>
+
+      <button type="submit">Calculate & Save</button>
+    </form>
+
+    {% if result is not none %}
+      <p class="result">
+        Actual size ≈ <strong>{{ "%.2f"|format(result) }} µm</strong>
+      </p>
+    {% endif %}
+  </div>
+</body>
+</html>
